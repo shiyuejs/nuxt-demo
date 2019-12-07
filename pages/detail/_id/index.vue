@@ -26,7 +26,7 @@ export default {
   },
   asyncData ({ params, error }) {
     // report_api/v1/report
-    return axios.get(`http://127.0.0.1:7304/demo/v1/demo?id=${params.id}`)
+    return axios.get(`http://47.95.193.254/demo/v1/demo?id=${params.id}`)
       .then((res) => {
         return { 
           type: res.data.data.type
@@ -51,7 +51,7 @@ export default {
   },
 
   mounted() {
-    axios.get(`http://127.0.0.1:7304/report_api/v1/report?id=${this.id}`).then((res) => {
+    axios.get(`http://47.95.193.254/report_api/v1/report?id=${this.id}`).then((res) => {
         this.time = res.data.time
       }).catch((e) => {
         console.log(e)
