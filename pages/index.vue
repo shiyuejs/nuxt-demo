@@ -3,19 +3,74 @@
     <div>
       <logo />
       <h1>nuxt-demo</h1>
-      <el-button>提交</el-button>
+      <br />
+      <br />
+      <br />
+
+      <el-button @click="handleToUser">个人中心</el-button>
+      <el-button @click="handleToList">列表页</el-button>
+      <br />
+      <br />
+      <br />
+
+      <div>
+        <el-button @click="handleAdd">store-todos-add - {{counter}}</el-button>
+        <div v-for="(item, index) in list" :key="index">{{item}}</div>
+      </div>
+
+
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
     </div>
   </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
+import Logo from "~/components/Logo.vue";
+import { mapState } from "vuex";
 
 export default {
+  data() {
+    return {
+
+    }
+  },
   components: {
     Logo
+  },
+  computed: Object.assign(
+    {},
+    mapState({
+      list: state => state.todos.list,
+      counter: state => state.counter
+    })
+  ),
+  methods: {
+    handleAdd() {
+      this.$store.commit("todos/add", Math.random());
+    },
+    handleToUser() {
+      this.$router.push({
+        name: "user",
+        query: {
+          source: "home"
+        }
+      });
+    },
+    handleToList() {
+      this.$router.push({
+        name: "list",
+        query: {
+          source: "home"
+        }
+      });
+    }
   }
-}
+};
 </script>
 
 <style>
@@ -29,8 +84,8 @@ export default {
 }
 
 .title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   display: block;
   font-weight: 300;
   font-size: 100px;
