@@ -2,14 +2,14 @@
 module.exports = {
 	mode: 'universal',
 	/*
-	** Headers of the page
+	** 页面头信息
 	*/
 	head: {
 		title: process.env.npm_package_name || '',
 		meta: [
 			{ charset: 'utf-8' },
 			{ name: 'viewport', content: 'width=device-width, initial-scale=1' },
-			{ hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
+			{ hid: 'description', name: 'description', content: 'description-defalut' }
 		],
 		// script: [
 		// 	{ src: '' }
@@ -20,11 +20,14 @@ module.exports = {
 		]
 	},
 	/*
-	** Customize the progress-bar color
+	** 自定义加载条的样式
 	*/
-	loading: { color: '#fff' },
+	loading: { 
+		color: '#fff',
+		height: '4px' 
+	},
 	/*
-	** Global CSS
+	** 全局 CSS
 	*/
 	css: [
 		//'element-ui/lib/theme-chalk/index.css'
@@ -34,18 +37,23 @@ module.exports = {
 		// }
 	],
 	/*
-	** Plugins to load before mounting the App
+	** 在安装app之前，加载插件
 	*/
 	plugins: [
 		{
 			src: '@/plugins/element-ui',
 			ssr: true,
+		},
+		{ 
+			src: "~plugins/server/index", 
+			ssr: false 
 		}
 	],
 	/*
 	** Nuxt.js dev-modules
 	*/
 	buildModules: [
+		'@nuxtjs/axios'
 	],
 	/*
 	** Nuxt.js modules
@@ -56,7 +64,14 @@ module.exports = {
 	** Build configuration
 	*/
 	build: {
+		analyze: false,
 		transpile: [/^element-ui/],
+		build: {
+			vendor: ['element-ui', 'axios']
+		},
+		babel: {
+
+		},
 		/*
 		** You can extend webpack config here
 		*/
@@ -64,5 +79,8 @@ module.exports = {
 
 		}
 	},
-	vendor: ['element-ui']
+	// vendor: [
+	// 	'element-ui',
+	// 	'axios'
+	// ]
 }
