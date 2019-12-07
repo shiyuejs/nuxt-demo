@@ -1,0 +1,14 @@
+{
+  "apps": [
+    {
+      "name": "nuxt-demo",
+      "script": "npm",
+      "args": "start",
+      "max_memory_restart": "60M",
+      "out_file": "/data/logs/nuxt-demo/out.log",
+      "error_file":  "/data/logs/nuxt-demo/error.log",
+      "log_file":    "/data/logs/nuxt-demo/log.log",
+      "log_date_format" : "YYYY-MM-DD HH:mm Z"
+    }
+  ]
+}
