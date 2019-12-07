@@ -41,7 +41,7 @@ export default {
     return {
       title: this.title,
       meta: [
-        { hid: 'keywords-detail', name: 'keywords', content: '详情页关键字',},
+        { hid: 'keywords-detail', name: 'keywords', content: `详情页关键字，${this.id}`,},
         { hid: 'description-detail', name: 'description', content: `详情页的description${this.id}` }
       ]
     }
