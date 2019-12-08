@@ -17,10 +17,11 @@ then
     pm2 restart pm2.json
 fi
 
-# 停止服务
+# 停止服务, 需要删除服务
 if [ $1 == "stop" ]
 then
     pm2 stop ${appName}
+	pm2 delete ${appName}
 fi
 
 # 初始化一个项目并启动, 用于要删除node_modules残留文件
