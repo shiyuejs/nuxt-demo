@@ -60,11 +60,18 @@ module.exports = {
 	*/
 	modules: [
 	],
-	/*
-	** Build configuration
+	/** 
+	* Build configuration
+	* https://zh.nuxtjs.org/api/configuration-build/
 	*/
 	build: {
 		analyze: false,
+
+		// .nuxt/dist/client/** 文件上传到cdn目录
+		publicPath: 'https://cvp-1258030994.file.myqcloud.com/nuxt-demo/',
+		filenames: {
+			chunk: ({ isDev }) => isDev ? '[name].js' : '[name].[chunkhash].js'
+		},
 		transpile: [/^element-ui/],
 		build: {
 			vendor: ['element-ui', 'axios']
