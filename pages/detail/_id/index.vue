@@ -15,7 +15,7 @@
 
 <script>
 import { mapState } from "vuex";
-import axios from "~/plugins/axios";
+import axios from "~/plugins/axios";	// 服务端请求
 
 export default {
     data() {
@@ -27,14 +27,14 @@ export default {
     },
     asyncData({ params, error }) {
         return axios
-            .get(`http://47.95.193.254/demo/v1/demo?id=${params.id}`)
+            .get(`/demo/v1/demo?id=${params.id}`)
             .then(res => {
                 return {
                     type: res.data.type
                 }
             })
             .catch(e => {
-                console.log(err);
+                console.log(e);
             });
     },
 
@@ -73,9 +73,7 @@ export default {
     methods: {
         async query() {
             try {
-                let res = await this.$http.get(
-                    `http://47.95.193.254/report_api/v1/report?id=${this.id}`
-                );
+                let res = await this.$api.get(`/report_api/v1/report?id=${this.id}`);
                 this.time = res.time;
             } catch (err) {
                 console.log(err);

@@ -45,7 +45,7 @@ module.exports = {
 			ssr: true,
 		},
 		{ 
-			src: "~plugins/server/index", 
+			src: "~plugins/axios/client/install", 
 			ssr: false 
 		}
 	],

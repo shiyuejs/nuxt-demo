@@ -1,10 +1,10 @@
 import Vue from "vue";
-import http from "./http";
+import axios from "../index";
 
 const install = function (VueClass, opts = {}) {
 
 	// http method
-	VueClass.http = http;
-	VueClass.prototype.$http = http;
+	// VueClass.http = axios;
+	VueClass.prototype.$api = axios;
 };
 Vue.use(install);
